@@ -23,35 +23,28 @@ disp(y);
 n = 0:N-1;
 Ex = sum(x.^2);
 Ey = sum(y.^2);
-disp("Ex=",Ex);
-disp("Ey=",Ey);
 
-clf;
-plot2d3(n, x); 
+// Display energy values to console for verification
+printf("Total Energy of x(n) (Ex) = %f\n", Ex);
+printf("Total Energy of y(n) (Ey) = %f\n", Ey);
+
+clf();
+
+// --- Subplot 1: Input Signal x(n) ---
+subplot(3,1,1);
+plot2d3(n, x);
+p1 = plot(n, x, 'b.'); 
+gca().auto_scale = "on";
+xtitle("Input Signal x(n)", "Sample index (n)", "Amplitude");
+
+// --- Subplot 2: Output Signal y(n) ---
+subplot(3,1,2);
 plot2d3(n, y);
-plot2d3(n, x.^2);
-plot2d3(n, y.^2);
+p2 = plot(n, y, 'r.');  
+gca().auto_scale = "on";
+xtitle("Output Signal y(n) (Circular Convolution)", "Sample index (n)", "Amplitude");
 
-// Vẽ các điểm màu để tạo legend
-p1 = plot(n, x, 'b.');     
-p2 = plot(n, y, 'r*');     
-p3 = plot(n, x.^2, 'm*');  
-p4 = plot(n, y.^2, 'k^');  
-
-poly1 = p1.children(1);
-poly1.mark_size = 10;
-
-poly2 = p2.children(1);
-poly2.mark_size = 20;
-
-poly3 = p3.children(1);
-poly3.mark_size = 22;
-
-poly4 = p4.children(1);
-poly4.mark_size = 6;
-
-// Thiết lập bound: [x_min, y_min; x_max, y_max]
-gca().data_bounds = [-0.5, -5; 4.5, 18]; 
-
-xtitle("x(n), y(n) and Energy", "n", "Amplitude");
-legend([p1, p2, p3, p4], ["x(n)", "y(n)", "x^2(n)", "y^2(n)"], opt=1);
+// --- Subplot 3: Total Energy Comparison (Bar Chart) ---
+subplot(3,1,3);
+bar([1 2], [Ex Ey], 0.5); // Bar chart comparing total energy values
+xtitle("Total Energy Comparison", "Signal", "Energy Value");
