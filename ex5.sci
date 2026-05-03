@@ -23,19 +23,19 @@ clf();
 // Pho bien do |X(w)|
 subplot(3,1,1);
 plot(omega, abs(X), 'b', 'LineWidth', 2);
-xtitle("|X(w)| - Input Amplitude Spectrum", "Frequency (rad/s)", "Amplitude");
+xtitle("|X(e^{jw})| - Input Amplitude Spectrum", "Frequency (rad/s)", "Amplitude");
 xgrid();
 
 // Pho bien do |H(w)|
 subplot(3,1,2);
 plot(omega, abs(H), 'g', 'LineWidth', 2);
-xtitle("|H(w)| - System Amplitude Spectrum", "Frequency (rad/s)", "Amplitude");
+xtitle("|H(e^{jw)| - System Amplitude Spectrum", "Frequency (rad/s)", "Amplitude");
 xgrid();
 
 // Pho bien do |Y(w)|
 subplot(3,1,3);
 plot(omega, abs(Y), 'r', 'LineWidth', 2);
-xtitle("|Y(w)| - Output Amplitude Spectrum", "Frequency (rad/s)", "Amplitude");
+xtitle("|Y(e^{jw)| - Output Amplitude Spectrum", "Frequency (rad/s)", "Amplitude");
 xgrid();
 
 // =================================================================
@@ -52,15 +52,15 @@ phase_Y = atan(imag(Y), real(Y));
 
 subplot(3,1,1);
 plot(omega, phase_X, 'b');
-xtitle("Phase X(omega)", "omega", "rad"); xgrid();
+xtitle("Phase X(e^{jw)", "omega", "rad"); xgrid();
 
 subplot(3,1,2);
 plot(omega, phase_H, 'g');
-xtitle("Phase H(omega)", "omega", "rad"); xgrid();
+xtitle("Phase H(e^{jw)", "omega", "rad"); xgrid();
 
 subplot(3,1,3);
 plot(omega, phase_Y, 'r');
-xtitle("Phase Y(omega)", "omega", "rad"); xgrid();
+xtitle("Phase Y(e^{jw)", "omega", "rad"); xgrid();
 xgrid();
 
 // =================================================================
